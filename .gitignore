@@ -27,22 +27,22 @@ build/
 
 # for a library or gem, you might want to ignore these files since the code is
 # intended to run in multiple environments; otherwise, check them in:
- Gemfile.lock
- .ruby-version
- .ruby-gemset
+Gemfile.lock
+.ruby-version
+.ruby-gemset
 
 # unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
 .rvmrc
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
- /db/*.sqlite3-journal  
+/db/*.sqlite3-journal  
 
 # Ignore all logfiles and tempfiles.
- /log/* 
+/log/* 
 !/log/.keep
- /tmp
+/tmp
 
-  #ignore idea stuff 
+#ignore idea stuff 
 .idea
 .idea/*
