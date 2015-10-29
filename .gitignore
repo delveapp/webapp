@@ -46,3 +46,6 @@ Gemfile.lock
 #ignore idea stuff 
 .idea
 .idea/*
+
+# ignore db password file
+config/application.yml
