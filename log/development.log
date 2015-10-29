@@ -124,3 +124,56 @@ Gem::LoadError (Specified 'sqlite3' for database adapter, but the gem is not loa
   Rendered /Users/Brendan/.rvm/gems/ruby-2.2.3@final_project/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
   Rendered /Users/Brendan/.rvm/gems/ruby-2.2.3@final_project/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.7ms)
   Rendered /Users/Brendan/.rvm/gems/ruby-2.2.3@final_project/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (183.0ms)
+
+
+Started GET "/" for ::1 at 2015-10-29 13:58:20 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/nshenkman/.rvm/gems/ruby-2.2.1/gems/railties-4.2.4/lib/rails/templates/rails/welcome/index.html.erb (1.5ms)
+Completed 200 OK in 9ms (Views: 9.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (26.5ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (24.6ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations`  ON `schema_migrations` (`version`) 
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to AddStupidTable (20151029175848)
+  [1m[35m (14.4ms)[0m  CREATE TABLE `stupid_table` (`id` int(11) auto_increment PRIMARY KEY, `name` varchar(255), `test` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20151029175848')
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36m (1.1ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'final_project_development'
+  AND fk.table_name = 'stupid_table'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `stupid_table`
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to DropStupidTable (20151029180517)
+  [1m[35m (1.5ms)[0m  DROP TABLE `stupid_table`
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20151029180517')
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36m (101.1ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (192.0ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations`  ON `schema_migrations` (`version`) 
+  [1m[36mActiveRecord::SchemaMigration Load (81.4ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to TestMigration (20151029182311)
+  [1m[36mActiveRecord::SchemaMigration Load (82.6ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to TestMigration (20151029182311)
+  [1m[35m (98.5ms)[0m  CREATE TABLE `test` (`id` int(11) auto_increment PRIMARY KEY, `name` varchar(255), `description` text, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (79.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (79.7ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20151029182311')
+  [1m[36m (85.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (93.6ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36m (79.6ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'final_project_development'
+  AND fk.table_name = 'test'
+[0m
+  [1m[35m (79.4ms)[0m  SHOW CREATE TABLE `test`

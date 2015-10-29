@@ -22,7 +22,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 
 gem 'bower-rails'
-
+gem "figaro"
 gem 'sass', '3.2.19'
 group :test, :development do
   gem "rspec-rails", "~> 2.0"
