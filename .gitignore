@@ -44,5 +44,5 @@ build/
  /tmp
 
   #ignore idea stuff 
-/idea/
- /idea/*
+.idea
+.idea/*
