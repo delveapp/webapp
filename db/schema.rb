@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151101164736) do
+ActiveRecord::Schema.define(version: 20151101175631) do
 
   create_table "menu_items", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(version: 20151101164736) do
     t.decimal  "price",                   precision: 4, scale: 2
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
+  end
+
+  create_table "restaurants", force: :cascade do |t|
+    t.string   "name",        limit: 255,                           null: false
+    t.decimal  "latitude",                  precision: 9, scale: 6, null: false
+    t.decimal  "longitude",                 precision: 9, scale: 6, null: false
+    t.string   "picture_url", limit: 255
+    t.text     "description", limit: 65535
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
   end
 
 end
