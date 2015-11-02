@@ -61,3 +61,5 @@ end
 gem 'audited-activerecord'
 
 gem 'devise'
+
+gem 'turbolinks'
