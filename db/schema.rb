@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151102030248) do
+ActiveRecord::Schema.define(version: 20151102033615) do
 
   create_table "categories", force: :cascade do |t|
     t.string "category", limit: 255, null: false
@@ -48,9 +48,12 @@ ActiveRecord::Schema.define(version: 20151102030248) do
   end
 
   create_table "user_pictures", force: :cascade do |t|
-    t.string   "picture_url", limit: 255, null: false
-    t.datetime "created_at",              null: false
+    t.string   "picture_url",  limit: 255, null: false
+    t.datetime "created_at",               null: false
+    t.integer  "menu_item_id", limit: 4
   end
+
+  add_index "user_pictures", ["menu_item_id"], name: "fk_rails_bcaed7c996", using: :btree
 
   create_table "user_scores", force: :cascade do |t|
     t.integer  "score",        limit: 4
@@ -78,7 +81,7 @@ ActiveRecord::Schema.define(version: 20151102030248) do
     t.string   "name",                   limit: 255,                         default: "", null: false
     t.decimal  "last_latitude",                      precision: 9, scale: 6
     t.decimal  "last_longitude",                     precision: 9, scale: 6
-    t.date     "birthday",                                                                null: false
+    t.date     "birthday"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -87,6 +90,7 @@ ActiveRecord::Schema.define(version: 20151102030248) do
   add_foreign_key "menu_items", "categories"
   add_foreign_key "menu_items", "menu_item_scores"
   add_foreign_key "menu_items", "restaurants"
+  add_foreign_key "user_pictures", "menu_items"
   add_foreign_key "user_scores", "menu_items"
   add_foreign_key "user_scores", "users"
 end
