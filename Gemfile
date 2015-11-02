@@ -58,3 +58,6 @@ group :development do
   gem 'spring'
 end
 
+gem 'audited-activerecord'
+
+gem 'devise'
