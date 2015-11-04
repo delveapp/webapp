@@ -38,6 +38,12 @@ Gemfile.lock
 /db/*.sqlite3
 /db/*.sqlite3-journal  
 
+# ignore bower stuff
+/vendor/assets/bower_components/
+/vendor/assets/bower_components/*
+/vendor/assets/.bowerrc
+/vendor/assets/bower.json
+
 # Ignore all logfiles and tempfiles.
 log
 log/* 
