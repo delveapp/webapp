@@ -2,6 +2,7 @@ finalProject = angular.module 'finalProject', [
   'templates',
   'ui.router',
   'controllers',
+  'angularUtils.directives.dirPagination',
 ]
 
 finalProject.config [ '$stateProvider', '$urlRouterProvider', '$locationProvider',

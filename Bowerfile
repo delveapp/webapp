@@ -6,5 +6,6 @@ asset 'angular'
 asset 'angular-ui-router'
 asset 'angular-animate'
 asset 'bootstrap-sass-official'
+asset 'angular-utils-pagination'
 
 # vim: ft=ruby
