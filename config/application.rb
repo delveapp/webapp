@@ -21,7 +21,14 @@ module FinalProject
     # config.i18n.default_locale = :de
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
+
+    # Needed for loading bootstrap stuff
+    config.assets.paths << Rails.root.join("vendor","assets","bower_components")
+    config.assets.paths << Rails.root.join("vendor","assets","bower_components","bootstrap-sass-official","assets","fonts")
+    config.assets.precompile << %r(.*.(?:eot|svg|ttf|woff|woff2)$)
+
     config.active_record.raise_in_transactional_callbacks = true
+
     ENV.update YAML.load_file('config/application.yml')[Rails.env] rescue {}
   end
 end
