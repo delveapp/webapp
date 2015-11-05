@@ -1,5 +1,5 @@
 class MenuItem < ActiveRecord::Base
-  attr_accessor :id, :name, :picture_url, :price, :created_at, :updated_at
+  attr :id, :name, :picture_url, :price, :created_at, :updated_at
   belongs_to :restaurant
   belongs_to :category
   has_many :user_pictures #need to change relation in ERD
