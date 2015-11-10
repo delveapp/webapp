@@ -11,11 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151109210714) do
+ActiveRecord::Schema.define(version: 20151110180405) do
 
-  create_table "categories", force: :cascade do |t|
-    t.string "category", limit: 255, null: false
+  create_table "menu_item_categories", force: :cascade do |t|
+    t.string  "category",           limit: 255, default: "", null: false
+    t.integer "search_category_id", limit: 4,                null: false
+    t.integer "restaurant_id",      limit: 4,                null: false
   end
+
+  add_index "menu_item_categories", ["restaurant_id"], name: "fk_rails_198ca688a0", using: :btree
+  add_index "menu_item_categories", ["search_category_id"], name: "fk_rails_5000c68c64", using: :btree
 
   create_table "menu_item_scores", force: :cascade do |t|
     t.decimal  "score",      precision: 3, scale: 2, default: 0.0, null: false
@@ -37,18 +42,26 @@ ActiveRecord::Schema.define(version: 20151109210714) do
   add_index "menu_items", ["menu_item_score_id"], name: "fk_rails_0943584503", using: :btree
   add_index "menu_items", ["restaurant_id"], name: "fk_rails_56e3e3a67b", using: :btree
 
-  create_table "restaurants", force: :cascade do |t|
-    t.string   "name",        limit: 255,                           null: false
-    t.decimal  "latitude",                  precision: 9, scale: 6, null: false
-    t.decimal  "longitude",                 precision: 9, scale: 6, null: false
-    t.string   "picture_url", limit: 255
-    t.text     "description", limit: 65535
-    t.datetime "created_at",                                        null: false
-    t.datetime "updated_at",                                        null: false
-    t.integer  "category_id", limit: 4,                             null: false
+  create_table "restaurant_categories", force: :cascade do |t|
+    t.string "category", limit: 255, null: false
   end
 
-  add_index "restaurants", ["category_id"], name: "fk_rails_08f808c5fb", using: :btree
+  create_table "restaurants", force: :cascade do |t|
+    t.string   "name",                   limit: 255,                           null: false
+    t.decimal  "latitude",                             precision: 9, scale: 6, null: false
+    t.decimal  "longitude",                            precision: 9, scale: 6, null: false
+    t.string   "picture_url",            limit: 255
+    t.text     "description",            limit: 65535
+    t.datetime "created_at",                                                   null: false
+    t.datetime "updated_at",                                                   null: false
+    t.integer  "restaurant_category_id", limit: 4
+  end
+
+  add_index "restaurants", ["restaurant_category_id"], name: "fk_rails_ac219086a3", using: :btree
+
+  create_table "search_categories", force: :cascade do |t|
+    t.string "category", limit: 255, default: "", null: false
+  end
 
   create_table "user_pictures", force: :cascade do |t|
     t.string   "picture_url",  limit: 255, null: false
@@ -92,10 +105,12 @@ ActiveRecord::Schema.define(version: 20151109210714) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "menu_items", "categories"
+  add_foreign_key "menu_item_categories", "restaurants", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "menu_item_categories", "search_categories", on_update: :cascade
   add_foreign_key "menu_items", "menu_item_scores", on_delete: :nullify
+  add_foreign_key "menu_items", "restaurant_categories", column: "category_id"
   add_foreign_key "menu_items", "restaurants", on_delete: :cascade
-  add_foreign_key "restaurants", "categories", on_delete: :cascade
+  add_foreign_key "restaurants", "restaurant_categories", on_update: :cascade, on_delete: :nullify
   add_foreign_key "user_pictures", "menu_items", on_delete: :cascade
   add_foreign_key "user_pictures", "users"
   add_foreign_key "user_scores", "menu_items", on_delete: :cascade
