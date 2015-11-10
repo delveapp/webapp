@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151102033615) do
+ActiveRecord::Schema.define(version: 20151109210714) do
 
   create_table "categories", force: :cascade do |t|
     t.string "category", limit: 255, null: false
   end
 
   create_table "menu_item_scores", force: :cascade do |t|
-    t.decimal  "score",      precision: 3, scale: 2, null: false
-    t.datetime "updated_at",                         null: false
+    t.decimal  "score",      precision: 3, scale: 2, default: 0.0, null: false
+    t.datetime "updated_at",                                       null: false
   end
 
   create_table "menu_items", force: :cascade do |t|
@@ -45,21 +45,26 @@ ActiveRecord::Schema.define(version: 20151102033615) do
     t.text     "description", limit: 65535
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
+    t.integer  "category_id", limit: 4,                             null: false
   end
+
+  add_index "restaurants", ["category_id"], name: "fk_rails_08f808c5fb", using: :btree
 
   create_table "user_pictures", force: :cascade do |t|
     t.string   "picture_url",  limit: 255, null: false
     t.datetime "created_at",               null: false
-    t.integer  "menu_item_id", limit: 4
+    t.integer  "menu_item_id", limit: 4,   null: false
+    t.integer  "user_id",      limit: 4,   null: false
   end
 
   add_index "user_pictures", ["menu_item_id"], name: "fk_rails_bcaed7c996", using: :btree
+  add_index "user_pictures", ["user_id"], name: "fk_rails_30d398c5a4", using: :btree
 
   create_table "user_scores", force: :cascade do |t|
-    t.integer  "score",        limit: 4
-    t.datetime "created_at"
-    t.integer  "user_id",      limit: 4
-    t.integer  "menu_item_id", limit: 4
+    t.integer  "score",        limit: 4, default: 0, null: false
+    t.datetime "created_at",                         null: false
+    t.integer  "user_id",      limit: 4,             null: false
+    t.integer  "menu_item_id", limit: 4,             null: false
   end
 
   add_index "user_scores", ["menu_item_id"], name: "fk_rails_884007de30", using: :btree
@@ -88,9 +93,11 @@ ActiveRecord::Schema.define(version: 20151102033615) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "menu_items", "categories"
-  add_foreign_key "menu_items", "menu_item_scores"
-  add_foreign_key "menu_items", "restaurants"
-  add_foreign_key "user_pictures", "menu_items"
-  add_foreign_key "user_scores", "menu_items"
-  add_foreign_key "user_scores", "users"
+  add_foreign_key "menu_items", "menu_item_scores", on_delete: :nullify
+  add_foreign_key "menu_items", "restaurants", on_delete: :cascade
+  add_foreign_key "restaurants", "categories", on_delete: :cascade
+  add_foreign_key "user_pictures", "menu_items", on_delete: :cascade
+  add_foreign_key "user_pictures", "users"
+  add_foreign_key "user_scores", "menu_items", on_delete: :cascade
+  add_foreign_key "user_scores", "users", on_delete: :cascade
 end
