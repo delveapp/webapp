@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151110180405) do
+ActiveRecord::Schema.define(version: 20151112172709) do
 
   create_table "menu_item_categories", force: :cascade do |t|
     t.string  "category",           limit: 255, default: "", null: false
@@ -23,23 +23,24 @@ ActiveRecord::Schema.define(version: 20151110180405) do
   add_index "menu_item_categories", ["search_category_id"], name: "fk_rails_5000c68c64", using: :btree
 
   create_table "menu_item_scores", force: :cascade do |t|
-    t.decimal  "score",      precision: 3, scale: 2, default: 0.0, null: false
-    t.datetime "updated_at",                                       null: false
+    t.decimal  "score",                  precision: 3, scale: 2, default: 0.0, null: false
+    t.datetime "updated_at",                                                   null: false
+    t.integer  "menu_item_id", limit: 4
   end
+
+  add_index "menu_item_scores", ["menu_item_id"], name: "fk_rails_e53e157b0a", using: :btree
 
   create_table "menu_items", force: :cascade do |t|
-    t.string   "name",               limit: 255
-    t.string   "picture_url",        limit: 255
-    t.decimal  "price",                          precision: 4, scale: 2
-    t.datetime "created_at",                                             null: false
-    t.datetime "updated_at",                                             null: false
-    t.integer  "category_id",        limit: 4
-    t.integer  "restaurant_id",      limit: 4
-    t.integer  "menu_item_score_id", limit: 4
+    t.string   "name",                  limit: 255
+    t.string   "picture_url",           limit: 255
+    t.decimal  "price",                             precision: 4, scale: 2
+    t.datetime "created_at",                                                null: false
+    t.datetime "updated_at",                                                null: false
+    t.integer  "restaurant_id",         limit: 4
+    t.integer  "menu_item_category_id", limit: 4
   end
 
-  add_index "menu_items", ["category_id"], name: "fk_rails_85ab260c44", using: :btree
-  add_index "menu_items", ["menu_item_score_id"], name: "fk_rails_0943584503", using: :btree
+  add_index "menu_items", ["menu_item_category_id"], name: "fk_rails_c43fc08e11", using: :btree
   add_index "menu_items", ["restaurant_id"], name: "fk_rails_56e3e3a67b", using: :btree
 
   create_table "restaurant_categories", force: :cascade do |t|
@@ -107,8 +108,8 @@ ActiveRecord::Schema.define(version: 20151110180405) do
 
   add_foreign_key "menu_item_categories", "restaurants", on_update: :cascade, on_delete: :cascade
   add_foreign_key "menu_item_categories", "search_categories", on_update: :cascade
-  add_foreign_key "menu_items", "menu_item_scores", on_delete: :nullify
-  add_foreign_key "menu_items", "restaurant_categories", column: "category_id"
+  add_foreign_key "menu_item_scores", "menu_items", on_delete: :cascade
+  add_foreign_key "menu_items", "menu_item_categories", on_delete: :nullify
   add_foreign_key "menu_items", "restaurants", on_delete: :cascade
   add_foreign_key "restaurants", "restaurant_categories", on_update: :cascade, on_delete: :nullify
   add_foreign_key "user_pictures", "menu_items", on_delete: :cascade
