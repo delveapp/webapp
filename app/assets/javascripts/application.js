@@ -18,4 +18,5 @@
 //= require angular-ui-router
 //= require angular-rails-templates
 //= require angular-utils-pagination/dirPagination
+//= require nya-bootstrap-select
 //= require_tree .

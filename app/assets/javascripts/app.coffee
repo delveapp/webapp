@@ -3,6 +3,7 @@ finalProject = angular.module 'finalProject', [
   'ui.router',
   'controllers',
   'angularUtils.directives.dirPagination',
+  'nya.bootstrap.select',
 ]
 
 finalProject.config [ '$stateProvider', '$urlRouterProvider', '$locationProvider',

@@ -1,0 +1,48 @@
+<div style="height:100px;background-color:gray">
+  <div class="col-sm-2" id="header-left">
+    <h2>FinalProject</h2>
+  </div>
+  <div class="col-sm-8" id="header-center">
+    <div class="form-group row" style="margin-top:30px;">
+      <div class="col-sm-5">
+        <input ng-model="search_criteria" class="form-control" placeholder="Charlie's, Chicken Marsala, Appetizers, etc">
+      </div>
+      <div class="col-sm-3">
+        <ol class="nya-bs-select form-control" ng-model="search_category">
+          <li data-value="restaurant" class="nya-bs-option">
+            <a>Restaurant</a>
+          </li>
+          <li data-value="restaurant_category" class="nya-bs-option">
+            <a>Restaurant Category</a>
+          </li>
+          <li data-value="menu_item" class="nya-bs-option">
+            <a>Menu Item</a>
+          </li>
+          <li data-value="menu_item_category" class="nya-bs-option">
+            <a>Menu Item Category</a>
+          </li>
+        </ol>
+      </div>
+      <div class="col-sm-3">
+        <input ng-model="search_location" class="form-control">
+      </div>
+      <div class="col-sm-1">
+        <button type="button" class="btn btn-lg" ng-click="search_by_category">
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-2" id="header-right">
+    <div class="row" style="padding-top:15px">
+      <div class="col-sm-offset-3 col-sm-6">
+        <button type="button" class="btn btn-xs btn-success" style="width:100%;text-align:center;">Sign Up</button>
+      </div>
+    </div>
+    <div class="row" style="padding-top:10px;">
+      <div class="col-sm-offset-3 col-sm-6">
+        <button type="button" class="btn btn-xs btn-warning" style="width:100%;text-align:center;">Log In</button>
+      </div>
+    </div>
+  </div>
+</div>
