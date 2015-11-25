@@ -4,6 +4,7 @@ delve = angular.module 'delve', [
   'controllers',
   'angularUtils.directives.dirPagination',
   'nya.bootstrap.select',
+  'ui.bootstrap',
 ]
 
 delve.config [ '$stateProvider', '$urlRouterProvider', '$locationProvider',

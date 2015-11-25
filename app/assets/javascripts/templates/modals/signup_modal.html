@@ -1,0 +1,12 @@
+<div class="modal-header">
+	<h3 class="modal-title" ng-if="action='signup'">Sign Up</h3>
+	<h3 class="modal-title" ng-if="action='login'">Log In</h3>
+</div>
+<div class="modal-body">
+	<p>This will be the sign up/log in modal</p>
+	<p>Current page: {{action}}</p>
+</div>
+<div class="modal-footer">
+	<button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+	<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

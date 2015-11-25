@@ -8,5 +8,6 @@ asset 'angular-animate'
 asset 'bootstrap-sass-official'
 asset 'angular-utils-pagination'
 asset 'nya-bootstrap-select'
+asset 'angular-bootstrap'
 
 # vim: ft=ruby

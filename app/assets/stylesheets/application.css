@@ -16,3 +16,5 @@
  */
 
 @import "bootstrap/dist/css/bootstrap.css";
+
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
