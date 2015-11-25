@@ -56,4 +56,6 @@ Rails.application.routes.draw do
   #   end
 
   root 'home#index'
+
+  get 'api/home/get_search_results' => 'home#search_by_user_selected_category'
 end

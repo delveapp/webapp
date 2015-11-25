@@ -1,4 +1,4 @@
-angular.module('finalProject')
+angular.module('delve')
 .controller 'FooterController', ($scope) ->
 
   init = () ->

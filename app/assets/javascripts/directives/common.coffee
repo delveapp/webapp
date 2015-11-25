@@ -1,18 +1,16 @@
-finalProject = angular.module('finalProject')
-finalProject.directive 'header', ->
+delve = angular.module('delve')
+delve.directive 'header', ->
   {
     restrict: 'A'
     replace: true
-    scope: { user: '=' }
     templateUrl: 'common/header.html'
     controller: 'HeaderController'
   }
 
-finalProject.directive 'footer', ->
+delve.directive 'footer', ->
   {
   restrict: 'A'
   replace: true
-  scope: { user: '=' }
   templateUrl: 'common/footer.html'
   controller: 'FooterController'
   }

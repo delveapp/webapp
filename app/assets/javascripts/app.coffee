@@ -1,4 +1,4 @@
-finalProject = angular.module 'finalProject', [
+delve = angular.module 'delve', [
   'templates',
   'ui.router',
   'controllers',
@@ -6,12 +6,12 @@ finalProject = angular.module 'finalProject', [
   'nya.bootstrap.select',
 ]
 
-finalProject.config [ '$stateProvider', '$urlRouterProvider', '$locationProvider',
+delve.config [ '$stateProvider', '$urlRouterProvider', '$locationProvider',
   ($stateProvider, $urlRouterProvider, $locationProvider) ->
     $stateProvider
     .state 'home',
         url: '/'
-        templateUrl: 'index.html'
+        templateUrl: 'home/home.html'
         controller: 'HomeController'
 
     # default fall back route
