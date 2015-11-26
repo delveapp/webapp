@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151112172709) do
+ActiveRecord::Schema.define(version: 20151125031919) do
 
   create_table "menu_item_categories", force: :cascade do |t|
     t.string  "category",           limit: 255, default: "", null: false
@@ -48,14 +48,16 @@ ActiveRecord::Schema.define(version: 20151112172709) do
   end
 
   create_table "restaurants", force: :cascade do |t|
-    t.string   "name",                   limit: 255,                           null: false
-    t.decimal  "latitude",                             precision: 9, scale: 6, null: false
-    t.decimal  "longitude",                            precision: 9, scale: 6, null: false
+    t.string   "name",                   limit: 255,                                        null: false
+    t.decimal  "latitude",                             precision: 9, scale: 6,              null: false
+    t.decimal  "longitude",                            precision: 9, scale: 6,              null: false
     t.string   "picture_url",            limit: 255
     t.text     "description",            limit: 65535
-    t.datetime "created_at",                                                   null: false
-    t.datetime "updated_at",                                                   null: false
+    t.datetime "created_at",                                                                null: false
+    t.datetime "updated_at",                                                                null: false
     t.integer  "restaurant_category_id", limit: 4
+    t.string   "address",                limit: 255,                           default: "", null: false
+    t.string   "url_title",              limit: 255
   end
 
   add_index "restaurants", ["restaurant_category_id"], name: "fk_rails_ac219086a3", using: :btree

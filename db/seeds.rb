@@ -135,6 +135,17 @@ def create_user_scores
                               :menu_item_id => MenuItem.find_by_name('Hectic Lou')['id'])
 end
 
+def update_restaurant_info
+  qdoba = Restaurant.where(:name => 'Qdoba Mexican Grill', :latitude => 42.339810, :longitude => -71.092821).first
+  lous = Restaurant.where(:name => "Chicken Lou's", :latitude => 42.339296, :longitude => -71.090202).first
+  qdoba['address'] = '393 Huntington Ave, Boston, MA 02115'
+  qdoba['url_title'] = 'qdoba+mexican+grill'
+  qdoba.save
+  lous['address'] = '50 Forsyth St, Boston, MA 02115'
+  lous['address'] = 'chicken+lous'
+  lous.save
+end
+
 if Rails.env == "development"
   create_search_categories
   create_restaurant_categories
@@ -144,4 +155,5 @@ if Rails.env == "development"
   create_users
   create_user_pictures
   create_user_scores
+  update_restaurant_info
 end

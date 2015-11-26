@@ -9,8 +9,8 @@ delve.directive 'header', ->
 
 delve.directive 'footer', ->
   {
-  restrict: 'A'
-  replace: true
-  templateUrl: 'common/footer.html'
-  controller: 'FooterController'
+    restrict: 'A'
+    replace: true
+    templateUrl: 'common/footer.html'
+    controller: 'FooterController'
   }

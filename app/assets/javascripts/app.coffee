@@ -14,6 +14,10 @@ delve.config [ '$stateProvider', '$urlRouterProvider', '$locationProvider',
         url: '/'
         templateUrl: 'home/home.html'
         controller: 'HomeController'
+    .state 'restaurant',
+        url: '/restaurant/{restaurantName}'
+        templateUrl: 'restaurants/restaurant.html'
+        controller: 'RestaurantController'
 
     # default fall back route
     $urlRouterProvider.otherwise '/'

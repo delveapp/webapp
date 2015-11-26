@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def index
+    render layout: 'application'
   end
 
   def search_by_user_selected_category
