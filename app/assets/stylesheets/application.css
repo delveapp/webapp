@@ -13,6 +13,8 @@
  *= require_tree .
  *= require_self
  *= require nya-bootstrap-select
+ *= require angular-input-stars/angular-input-stars.css
+ *= require font-awesome
  */
 
 @import "bootstrap/dist/css/bootstrap.css";

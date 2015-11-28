@@ -5,6 +5,7 @@ delve = angular.module 'delve', [
   'angularUtils.directives.dirPagination',
   'nya.bootstrap.select',
   'ui.bootstrap',
+  'angular-input-stars',
 ]
 
 delve.config [ '$stateProvider', '$urlRouterProvider', '$locationProvider',

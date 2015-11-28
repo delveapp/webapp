@@ -9,5 +9,5 @@ asset 'bootstrap-sass-official'
 asset 'angular-utils-pagination'
 asset 'nya-bootstrap-select'
 asset 'angular-bootstrap'
-
+asset 'angular-input-stars'
 # vim: ft=ruby

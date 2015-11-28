@@ -1,7 +1,5 @@
 angular.module('delve')
-.controller 'HeaderController', ($scope, $uibModal) ->
-
-  $scope.action = ""
+.controller 'HeaderController', ($scope, $rootScope, $uibModal) ->
 
   init = () ->
     $.get 'http://ipinfo.io', ((response) ->
