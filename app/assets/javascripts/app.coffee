@@ -12,13 +12,17 @@ delve.config [ '$stateProvider', '$urlRouterProvider', '$locationProvider',
   ($stateProvider, $urlRouterProvider, $locationProvider) ->
     $stateProvider
     .state 'home',
-        url: '/'
-        templateUrl: 'home/home.html'
-        controller: 'HomeController'
+      url: '/'
+      templateUrl: 'home/home.html'
+      controller: 'HomeController'
     .state 'restaurant',
-        url: '/restaurant/{restaurantName}'
-        templateUrl: 'restaurants/restaurant.html'
-        controller: 'RestaurantController'
+      url: '/restaurant/{restaurantName}'
+      templateUrl: 'restaurants/restaurant.html'
+      controller: 'RestaurantController'
+    .state 'restaurant.menu_item',
+      url: '/restaurant/{restaurantName}'
+      templateUrl: 'restaurants/restaurant.html'
+      controller: 'RestaurantController'
 
     # default fall back route
     $urlRouterProvider.otherwise '/'

@@ -10,13 +10,7 @@ angular.module('delve')
     .then ((response) ->
       $scope.restaurant = response.data.restaurant
       $scope.menu_items = response.data.menu_items
-      counter = 0
-      rating = 0
-      for menu_item in response.data.menu_items
-        for score in menu_item.user_scores
-          rating += score.score
-          counter++
-      $scope.rating = rating/counter
+      console.log response
     ), (response) ->
       console.log "error"
 
