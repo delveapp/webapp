@@ -63,3 +63,6 @@ end
 gem 'audited-activerecord'
 
 gem 'devise'
+
+# Use Geocoder for latitude/longitude calculations
+gem 'geocoder'

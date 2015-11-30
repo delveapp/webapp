@@ -3,6 +3,12 @@ class HomeController < ApplicationController
     render layout: 'application'
   end
 
+  def top_menu_items
+    render :json => {:success => true, :data => MenuItem.find_top_menu_items(params[:latitude].to_f,
+                                                                             params[:longitude].to_f,
+                                                                             params[:range].to_i)[0..(params[:limit].to_i - 1)]}
+  end
+
   def search_by_user_selected_category
     if params[:search_category] == 'restaurant_name'
       search_results = Restaurant.where(name: params[:search_criteria])

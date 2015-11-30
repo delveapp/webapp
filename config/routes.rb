@@ -57,6 +57,7 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
+  get 'api/home/top_menu_items' => 'home#top_menu_items'
   get 'api/home/get_search_results' => 'home#search_by_user_selected_category'
   get 'api/restaurant/get_restaurant_info' => 'restaurant#get_restaurant_by_url_title'
 

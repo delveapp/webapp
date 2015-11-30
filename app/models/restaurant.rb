@@ -13,4 +13,10 @@ class Restaurant < ActiveRecord::Base
     restaurant['score'] = score_array.inject(0.0) { |sum, el| sum + el } / score_array.size
     {restaurant: restaurant, menu_items: menu_items}
   end
+
+  def as_json(options = nil)
+    super({ only: [:id, :name, :latitude, :longitude, :picture_url, :address, :description], include: [:restaurant_category]}.merge(options || {}))
+  end
+
+  reverse_geocoded_by :latitude, :longitude, :address => :location
 end
