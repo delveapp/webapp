@@ -1,6 +1,6 @@
 delve = angular.module('delve')
 
-delve.directive 'dvMenuSelection', () ->
+delve.directive 'dvMenuSelection', ($rootScope) ->
   (scope, elem, attrs) ->
     elem.bind 'change', (e) ->
       if attrs.id is 'search-radius'
@@ -12,7 +12,10 @@ delve.directive 'dvMenuSelection', () ->
 
     getTopMenuItems = ->
       jQuery.ajax
-        url: '/api/home/top_menu_items?latitude=42.337443&longitude=-71.086074&range=' + scope.searchRadius + '&limit=2$sortOrder=' + scope.sortOrder,
+        url: '/api/home/top_menu_items?latitude=' + $rootScope.latLong[0] +
+          '&longitude=' + $rootScope.latLong[1] +
+          '&range=' + scope.searchRadius +
+          '&limit=25&sortOrder=' + scope.sortOrder,
         success: (response) ->
           scope.menuItems = response['data']
           scope.$apply()

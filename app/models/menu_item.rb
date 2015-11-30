@@ -10,7 +10,7 @@ class MenuItem < ActiveRecord::Base
     super({ only: [:id, :name, :picture_url, :price, :description], include: [:menu_item_score, :user_pictures, :restaurant] }.merge(options || {}))
   end
 
-  def self.find_top_menu_items(latitude = 0, longitude = 0, range_miles = 5)
+  def self.find_top_menu_items(latitude = 0, longitude = 0, range_miles = 5, sort_order)
     menu_items = []
     restaurants = Restaurant.near([latitude, longitude], range_miles)
     restaurants.each do |r|
@@ -18,6 +18,21 @@ class MenuItem < ActiveRecord::Base
         menu_items.push m
       end
     end
-    return menu_items.as_json.sort { |a, b| b['menu_item_score']['score'] <=> a['menu_item_score']['score'] }
+    return MenuItem.sort_by_order(menu_items, sort_order)
+  end
+
+  def self.sort_by_order(items = [], sort_order = 'score-desc')
+    case sort_order
+      when 'score-desc'
+        items.as_json.sort { |a, b| b['menu_item_score']['score'] <=> a['menu_item_score']['score'] }
+      when 'score-asc'
+        items.as_json.sort { |a, b| a['menu_item_score']['score'] <=> b['menu_item_score']['score'] }
+      when 'price-asc'
+        items.as_json.sort { |a, b| a['price'] <=> b['price'] }
+      when 'price-desc'
+        items.as_json.sort { |a, b| b['price'] <=> a['price'] }
+      else 'score-desc'
+        items.as_json.sort { |a, b| b['menu_item_score']['score'] <=> a['menu_item_score']['score'] }
+    end
   end
 end

@@ -23,6 +23,9 @@
     <div class="col-md-2">
       <select id="sort-order" class="form-control col-md-1" dv-menu-selection>
         <option data-value="score-desc">score: high to low</option>
+        <option data-value="score-asc">score: low to high</option>
+        <option data-value="price-desc">price: high to low</option>
+        <option data-value="price-asc">price: low to high</option>
       </select>
     </div>
     </div>
@@ -32,7 +35,7 @@
         <h4 class="left">{{menuItem.name}}</h4>
         <div class="right score-container">
           <input input-stars id="item-rating-{{menuItem.id}}" max="5" icon-base="fa fa-lg fa-fw" icon-empty="fa-star-o" icon-hover="hover" icon-full="fa-star" ng-model="menuItem.menu_item_score.score" readonly></inputinput-stars>
-          <h4 class="menu-item-score"><label for="item-rating-{{menuItem.id}}">{{menuItem.menu_item_score.score}}</label></h4>
+          <h4 class="menu-item-score"><label for="item-rating-{{menuItem.id}}">{{menuItem.menu_item_score.score}} (${{menuItem.price}})</label></h4>
         </div>
       </td>
     </tr>

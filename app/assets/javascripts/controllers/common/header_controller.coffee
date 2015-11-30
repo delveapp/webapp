@@ -4,6 +4,7 @@ angular.module('delve')
   init = () ->
     $.get 'http://ipinfo.io', ((response) ->
       $scope.search_location = response.city + ", " + response.region
+      $rootScope.$emit('locationLoaded', {loc: response.loc.split(",")})
       $scope.$apply()
     ), 'jsonp'
 

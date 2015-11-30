@@ -1,13 +1,20 @@
 delve = angular.module('delve')
-delve.controller 'HomeController', ($scope) ->
+delve.controller 'HomeController', ($scope, $rootScope) ->
   $scope.init = () ->
     $scope.menuItems = []
     $scope.searchRadius = 1
     $scope.sortOrder = "score-desc"
-    jQuery.ajax
-      url: '/api/home/top_menu_items?latitude=42.337443&longitude=-71.086074&range=5&limit=2',
-      success: (response) ->
-        $scope.menuItems = response['data']
-        $scope.$apply()
+    $rootScope.$on('locationLoaded', (event, data) ->
+      $rootScope.latLong = data.loc
+      $rootScope.$apply()
+      jQuery.ajax
+        url: '/api/home/top_menu_items?latitude=' + data.loc[0] +
+          '&longitude=' + data.loc[1] +
+          '&range=5&limit=25&sortOrder=score-desc',
+        success: (response) ->
+          $scope.menuItems = response['data']
+          $scope.$apply()
+    )
+
 
   $scope.init()
