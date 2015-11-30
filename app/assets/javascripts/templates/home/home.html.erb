@@ -7,4 +7,35 @@
   <div class="row">
     <button class="btn btn-lg" type="button">Sign Up Now</button>
   </div>
+  <section id="top-menu-items" ng-scope>
+    <div id="search-param-selection" class="row">
+    <div class="col-md-8 spacer"></div>
+    <div class="col-md-2">
+      <select id="search-radius" class="form-control" dv-menu-selection>
+        <option data-value="1">1 mile</option>
+        <option data-value="2">2 miles</option>
+        <option data-value="5" selected="selected">5 miles</option>
+        <option data-value="10">10 miles</option>
+        <option data-value="20">20 miles</option>
+        <option data-value="50">50 miles</option>
+      </select>
+    </div>
+    <div class="col-md-2">
+      <select id="sort-order" class="form-control col-md-1" dv-menu-selection>
+        <option data-value="score-desc">score: high to low</option>
+      </select>
+    </div>
+    </div>
+    <table class="table table-striped" id="menu-items">
+    <tr class="menu-item"  ng-repeat="menuItem in menuItems">
+      <td>
+        <h4 class="left">{{menuItem.name}}</h4>
+        <div class="right score-container">
+          <input input-stars id="item-rating-{{menuItem.id}}" max="5" icon-base="fa fa-lg fa-fw" icon-empty="fa-star-o" icon-hover="hover" icon-full="fa-star" ng-model="menuItem.menu_item_score.score" readonly></inputinput-stars>
+          <h4 class="menu-item-score"><label for="item-rating-{{menuItem.id}}">{{menuItem.menu_item_score.score}}</label></h4>
+        </div>
+      </td>
+    </tr>
+    </table>
+  </section>
 </div>
