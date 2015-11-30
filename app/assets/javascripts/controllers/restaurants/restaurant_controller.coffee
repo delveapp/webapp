@@ -10,7 +10,6 @@ angular.module('delve')
     .then ((response) ->
       $scope.restaurant = response.data.restaurant
       $scope.menu_items = response.data.menu_items
-      console.log response
     ), (response) ->
       console.log "error"
 
