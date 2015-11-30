@@ -4,7 +4,7 @@
 			<h1>{{restaurant.name}}</h1>
 			<h4>{{restaurant.address}}</h4>
 			<div>
-				<input-stars max="5" icon-base="fa fa-lg fa-fw" icon-empty="fa-star-o" icon-hover="hover" icon-full="fa-star" ng-model="rating"></input-stars>{{rating}}
+				<input-stars max="5" icon-base="fa fa-lg fa-fw" icon-empty="fa-star-o" icon-hover="hover" icon-full="fa-star" ng-model="restaurant.score" readonly></input-stars>{{rating}}
 			</div>
 		</div>
 		<div class="col-sm-4">
@@ -16,12 +16,16 @@
 			<div class="col-sm-offset-1 col-sm-10" style="overflow:scroll;height:600px;max-width:100%;border: 1px solid black">
 				<div ng-repeat="item in menu_items">
 					<div class="col-sm-4">
-						<img class="img-responsive" src="{{item.picture_url}}" alt="{{item.name}} image" style="max-width:100%;">
+						<a href class="menu-item-link" ui-sref="restaurant.menu_item({menuItemId: item.id})">
+							<img class="img-responsive" src="{{item.picture_url}}" alt="{{item.name}} image" style="max-width:100%;">
+						</a>
 					</div>
 					<div class="col-sm-8">
-						<h5><a ui-sref="restaurant.menu_item({menuItemId: item.id})">{{item.name}}</a></h5>
-						<input-stars max="5" icon-base="fa fa-fw" icon-empty="fa-star-o" icon-hover="hover" icon-full="fa-star" ng-model="item.user_scores[0].score" readonly></input-stars>{{item.user_scores[0].score}}
-						<div>{{item.description}}</div>
+						<a href class="menu-item-link" ui-sref="restaurant.menu_item({menuItemId: item.id})">
+							<h5>{{item.name}}</h5>
+							<input-stars max="5" icon-base="fa fa-fw" icon-empty="fa-star-o" icon-hover="hover" icon-full="fa-star" ng-model="item.menu_item_score.score" readonly></input-stars>{{item.user_scores[0].score}}
+							<span>{{item.description}}</span>
+						</a>
 					</div>
 				</div>
 			</div>
