@@ -65,8 +65,8 @@ Rails.application.routes.draw do
   get 'api/menu_item/get_menu_item_info' => 'menu_item#get_menu_item_by_id'
 
   get 'api/score' => 'score#index'
-  put 'api/score' => 'score#create'
-  post 'api/score' => 'score#update'
+  post 'api/score' => 'score#create'
+  put 'api/score' => 'score#update'
 
   get "*path" => 'home#index'
 
