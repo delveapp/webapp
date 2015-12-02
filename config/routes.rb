@@ -59,8 +59,14 @@ Rails.application.routes.draw do
 
   get 'api/home/top_menu_items' => 'home#top_menu_items'
   get 'api/home/get_search_results' => 'home#search_by_user_selected_category'
+
   get 'api/restaurant/get_restaurant_info' => 'restaurant#get_restaurant_by_url_title'
+
   get 'api/menu_item/get_menu_item_info' => 'menu_item#get_menu_item_by_id'
+
+  get 'api/score' => 'score#index'
+  put 'api/score' => 'score#create'
+  post 'api/score' => 'score#update'
 
   get "*path" => 'home#index'
 
