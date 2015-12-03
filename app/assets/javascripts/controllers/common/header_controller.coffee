@@ -15,5 +15,13 @@ angular.module('delve')
       templateUrl: 'modals/signup_modal.html'
       controller: 'SignupModalController'
     )
+  $scope.logout = () ->
+    jQuery.ajax
+      url: '/users/sign_out',
+      type: 'DELETE',
+      success: (response) ->
+        window.location.reload(true);
+        $scope.$apply()
+
 
   init()
