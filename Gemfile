@@ -66,3 +66,7 @@ gem 'devise'
 
 # Use Geocoder for latitude/longitude calculations
 gem 'geocoder'
+
+source "https://rails-assets.org" do
+  gem 'rails-assets-angular-devise'
+end

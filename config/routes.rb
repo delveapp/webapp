@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -68,6 +69,8 @@ Rails.application.routes.draw do
   post 'api/score' => 'score#create'
   put 'api/score' => 'score#update'
 
-  get "*path" => 'home#index'
+  match 'users/:id' => 'user#destroy', :via => :delete, :as => :admin_destroy_user
+  resources :users
 
+  get "*path" => 'home#index'
 end

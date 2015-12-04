@@ -21,4 +21,5 @@
 //= require nya-bootstrap-select
 //= require angular-input-stars
 //= require angular-bootstrap
+//= require angular-devise
 //= require_tree .

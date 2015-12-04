@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151128211552) do
+ActiveRecord::Schema.define(version: 20151204000838) do
 
   create_table "menu_item_categories", force: :cascade do |t|
     t.string  "category",           limit: 255, default: "", null: false
@@ -116,7 +116,7 @@ ActiveRecord::Schema.define(version: 20151128211552) do
   add_foreign_key "menu_items", "restaurants", on_delete: :cascade
   add_foreign_key "restaurants", "restaurant_categories", on_update: :cascade, on_delete: :nullify
   add_foreign_key "user_pictures", "menu_items", on_delete: :cascade
-  add_foreign_key "user_pictures", "users"
+  add_foreign_key "user_pictures", "users", on_delete: :cascade
   add_foreign_key "user_scores", "menu_items", on_delete: :cascade
   add_foreign_key "user_scores", "users", on_delete: :cascade
 end

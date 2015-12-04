@@ -6,10 +6,11 @@ delve = angular.module 'delve', [
   'nya.bootstrap.select',
   'ui.bootstrap',
   'angular-input-stars',
+  'Devise',
 ]
 
 delve.config [ '$stateProvider', '$urlRouterProvider', '$locationProvider', '$urlMatcherFactoryProvider'
-  ($stateProvider, $urlRouterProvider, $locationProvider, $urlMatcherFactoryProvider) ->
+  ($stateProvider, $urlRouterProvider, $locationProvider, $urlMatcherFactoryProvider, AuthProvider) ->
 
     $urlMatcherFactoryProvider.strictMode false
     menuItemUrl = $urlMatcherFactoryProvider.compile("/restaurant/:restaurantName/:menuItemId");

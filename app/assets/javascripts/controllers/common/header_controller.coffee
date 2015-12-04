@@ -1,6 +1,6 @@
 angular.module('delve')
-.controller 'HeaderController', ($scope, $rootScope, $uibModal) ->
-
+.controller 'HeaderController', (Auth, $scope, $rootScope, $uibModal) ->
+  Auth.currentUser().then ((user) ->
   init = () ->
     $.get 'http://ipinfo.io', ((response) ->
       $scope.search_location = response.city + ", " + response.region
@@ -23,5 +23,13 @@ angular.module('delve')
         window.location.reload(true);
         $scope.$apply()
 
+  $scope.deleteAccount = () ->
+    jQuery.ajax
+      url: '/users/' + $rootScope.user.id,
+      type: 'DELETE',
+      success: (response) ->
+        window.location.reload(true);
+        $scope.$apply()
+  )
 
   init()

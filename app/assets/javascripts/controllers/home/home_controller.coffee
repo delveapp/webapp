@@ -1,11 +1,12 @@
 delve = angular.module('delve')
-delve.controller 'HomeController', ($scope, $rootScope) ->
+delve.controller 'HomeController', (Auth, $scope, $rootScope) ->
   $scope.init = () ->
     $scope.menuItems = []
     $scope.searchRadius = 1
     $scope.sortOrder = "score-desc"
     $rootScope.$on('locationLoaded', (event, data) ->
       $rootScope.latLong = data.loc
+      $rootScope.user = Auth._currentUser
       $rootScope.$apply()
       jQuery.ajax
         url: '/api/home/top_menu_items?latitude=' + data.loc[0] +
