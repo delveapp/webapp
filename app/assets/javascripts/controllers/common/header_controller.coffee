@@ -1,6 +1,5 @@
 angular.module('delve')
 .controller 'HeaderController', (Auth, $scope, $rootScope, $uibModal) ->
-  Auth.currentUser().then ((user) ->
   init = () ->
     $.get 'http://ipinfo.io', ((response) ->
       $scope.search_location = response.city + ", " + response.region
@@ -30,6 +29,5 @@ angular.module('delve')
       success: (response) ->
         window.location.reload(true);
         $scope.$apply()
-  )
 
   init()

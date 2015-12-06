@@ -1,0 +1,32 @@
+<div class="auth-wrapper">
+  <div class="container" style="height: 100%; display: flex; align-items: center;">
+
+    <div class="content login">
+      <h2>Create New Account</h2>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= devise_error_messages! %>
+
+          <div class="field">
+            <%= f.email_field :email, placeholder: 'Email', autofocus: true %>
+          </div>
+
+          <div class="field">
+            <!--<% if @minimum_password_length %>-->
+                <!--<em>(<%= @minimum_password_length %> characters minimum)</em>-->
+                <!--<% end %><br /> -->
+            <%= f.password_field :password, placeholder: 'Password 8 characters min', autocomplete: "off" %>
+          </div>
+
+          <div class="field">
+            <%= f.password_field :password_confirmation, placeholder: 'Confirm your password', autocomplete: "off" %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "Sign up", class:'signup' %>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<%= render "devise/shared/links" %>
