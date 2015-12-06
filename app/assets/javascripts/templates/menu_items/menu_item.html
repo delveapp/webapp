@@ -1,1 +1,8 @@
-{{menu_item}}
+<div class="container" style="margin-top:15px;">
+    <h1>{{menu_item.name}}</h1>
+    <a href class="restaurant-link" ui-sref="restaurant({restaurantName: menu_item.restaurant.url_title})">
+        <h5>{{menu_item.restaurant.name}}</h5>
+    </a>
+    <img class="img-responsive" src="{{menu_item.picture_url}}" style="max-width:100%;">
+
+</div>

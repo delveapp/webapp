@@ -1,8 +1,6 @@
 angular.module('delve')
 .controller 'MenuItemController', ($scope, $http, $state, $stateParams) ->
 
-  console.log $stateParams
-
   $scope.init = () ->
     $http(
       method: "GET"

@@ -16,12 +16,12 @@
 			<div class="col-sm-offset-1 col-sm-10" style="overflow:scroll;height:600px;max-width:100%;border: 1px solid black">
 				<div ng-repeat="item in menu_items">
 					<div class="col-sm-4">
-						<a href class="menu-item-link" ui-sref="restaurant.menu_item({menuItemId: item.id})">
+						<a href class="menu-item-link" ui-sref="menuItem({restaurantName: item.restaurant.url_title, menuItemId: item.id})">
 							<img class="img-responsive" src="{{item.picture_url}}" alt="{{item.name}} image" style="max-width:100%;">
 						</a>
 					</div>
 					<div class="col-sm-8">
-						<a href class="menu-item-link" ui-sref="restaurant.menu_item({menuItemId: item.id})">
+						<a href class="menu-item-link" ui-sref="menuItem({restaurantName: item.restaurant.url_title, menuItemId: item.id})">
 							<h5>{{item.name}}</h5>
 							<input-stars max="5" icon-base="fa fa-fw" icon-empty="fa-star-o" icon-hover="hover" icon-full="fa-star" ng-model="item.menu_item_score.score" readonly></input-stars>{{item.user_scores[0].score}}
 							<span>{{item.description}}</span>

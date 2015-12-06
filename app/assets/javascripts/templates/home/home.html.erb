@@ -32,7 +32,9 @@
     <table class="table table-striped" id="menu-items">
     <tr class="menu-item"  ng-repeat="menuItem in menuItems">
       <td>
-        <h4 class="left">{{menuItem.name}}</h4>
+        <h1>
+          <a class = "left" ui-sref="menuItem({restaurantName: menuItem.restaurant.url_title, menuItemId: menuItem.id})">{{menuItem.name}}</a>
+        </h1>
         <div class="right score-container">
           <input input-stars id="item-rating-{{menuItem.id}}" max="5" icon-base="fa fa-lg fa-fw" icon-empty="fa-star-o" icon-hover="hover" icon-full="fa-star" ng-model="menuItem.menu_item_score.score" readonly></inputinput-stars>
           <h4 class="menu-item-score"><label for="item-rating-{{menuItem.id}}">{{menuItem.menu_item_score.score}} (${{menuItem.price}})</label></h4>
