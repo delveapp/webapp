@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151204002301) do
+ActiveRecord::Schema.define(version: 20151207043057) do
 
   create_table "menu_item_categories", force: :cascade do |t|
     t.string  "category",           limit: 255, default: "", null: false
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20151204002301) do
   end
 
   add_index "restaurants", ["restaurant_category_id"], name: "fk_rails_ac219086a3", using: :btree
+  add_index "restaurants", ["url_title"], name: "index_restaurants_on_url_title", unique: true, using: :btree
 
   create_table "search_categories", force: :cascade do |t|
     t.string "category", limit: 255, default: "", null: false
