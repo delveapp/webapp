@@ -43,6 +43,7 @@ Gemfile.lock
 /vendor/assets/bower_components/*
 /vendor/assets/.bowerrc
 /vendor/assets/bower.json
+/bower_components
 
 # Ignore all logfiles and tempfiles.
 log
