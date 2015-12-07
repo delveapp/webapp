@@ -34,7 +34,7 @@ class ScoreController < ApplicationController
     menu_item = params[:menu_item]
     score = params[:score]
     new_score = UserScore.lock.find_by(user_id: user, menu_item_id: menu_item)
-    if new_score == nil
+    if new_score != nil
       new_score[:score] = score
       render :json => {data: new_score.as_json}, status: 200 if new_score.save!
     else

@@ -21,7 +21,7 @@ delve.controller 'HomeController', (Auth, $scope, $rootScope) ->
     jQuery.ajax
       url: '/api/home/top_menu_items?latitude=' + $rootScope.latLong[0] +
         '&longitude=' + $rootScope.latLong[1] +
-        '&range=5&limit=25&sortOrder=score-desc',
+        '&range=5&sortOrder=score-desc',
       success: (response) ->
         $scope.menuItems = response['data']
         $scope.$apply()

@@ -7,7 +7,7 @@ class HomeController < ApplicationController
     render :json => {:success => true, :data => MenuItem.find_top_menu_items(params[:latitude].to_f,
                                                                              params[:longitude].to_f,
                                                                              params[:range].to_f,
-                                                                             params[:sortOrder])[0..(params[:limit].to_i - 1)]}
+                                                                             params[:sortOrder])}#[0..(params[:limit].to_i - 1)]}
   end
 
   def search_by_user_selected_category

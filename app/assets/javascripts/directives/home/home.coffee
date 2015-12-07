@@ -15,7 +15,7 @@ delve.directive 'dvMenuSelection', ($rootScope) ->
         url: '/api/home/top_menu_items?latitude=' + $rootScope.latLong[0] +
           '&longitude=' + $rootScope.latLong[1] +
           '&range=' + scope.searchRadius +
-          '&limit=25&sortOrder=' + scope.sortOrder,
+          '&sortOrder=' + scope.sortOrder,
         success: (response) ->
           scope.menuItems = response['data']
           scope.$apply()
