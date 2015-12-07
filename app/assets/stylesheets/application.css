@@ -18,5 +18,5 @@
  */
 
 @import "bootstrap/dist/css/bootstrap.css";
-
+@import "main.scss";
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }

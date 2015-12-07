@@ -19,3 +19,15 @@ delve.directive 'dvMenuSelection', ($rootScope) ->
         success: (response) ->
           scope.menuItems = response['data']
           scope.$apply()
+
+delve.directive 'dvRating', ($rootScope, $http) ->
+  (scope, elem, attrs) ->
+    elem.bind 'click', (e) ->
+      $http({
+        method: 'POST'
+        url: 'api/score'
+        data: {uid: $rootScope.user.id, menu_item: attrs.menuItem, score: attrs.value}
+      }).then (resp) ->
+        alert("The score for menu item " + attrs.menuItem + " has been updated to " + resp.data.data.score + ": \n" + JSON.stringify resp.data.data)
+      , (resp) ->
+        alert("There was an error adding or updating your score: \n" + JSON.stringify(resp.data) + '\nStatus: ' + JSON.stringify(resp.status))

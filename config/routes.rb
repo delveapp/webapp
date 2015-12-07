@@ -66,8 +66,8 @@ Rails.application.routes.draw do
   get 'api/menu_item/get_menu_item_info' => 'menu_item#get_menu_item_by_id'
 
   get 'api/score' => 'score#index'
-  post 'api/score' => 'score#create'
-  put 'api/score' => 'score#update'
+  post 'api/score' => 'score#create_or_update'
+  #put 'api/score' => 'score#update'
 
   match 'users/:id' => 'user#destroy', :via => :delete, :as => :admin_destroy_user
   resources :users

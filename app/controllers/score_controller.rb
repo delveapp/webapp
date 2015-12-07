@@ -13,7 +13,7 @@ class ScoreController < ApplicationController
     end
   end
 
-  def create
+  def create_or_update
     # TODO: Sanitize inputs!!
     user = params[:uid]
     menu_item = params[:menu_item]
@@ -23,17 +23,18 @@ class ScoreController < ApplicationController
       new_score = UserScore.new(score: score, user_id: user, menu_item_id: menu_item)
       render :json => {data: new_score.as_json}, status: 201 if new_score.save
     else
-      render :json => {error: "Score already created for user #{user} on menu item #{menu_item}. Use POST to update"}, status: 409
+      update(params)
+      #render :json => {error: "Score already created for user #{user} on menu item #{menu_item}. Use POST to update"}, status: 409
     end
   end
 
-  def update
+  def update(params)
     # TODO: Sanitize inputs!!
     user = params[:uid]
     menu_item = params[:menu_item]
     score = params[:score]
     new_score = UserScore.lock.find_by(user_id: user, menu_item_id: menu_item)
-    if new_score != nil
+    if new_score == nil
       new_score[:score] = score
       render :json => {data: new_score.as_json}, status: 200 if new_score.save!
     else
