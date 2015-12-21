@@ -16,8 +16,8 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: final_project_test
+  database: delve_test
 
 production:
   <<: *default
-  database: final_project_production
+  database: delve_production

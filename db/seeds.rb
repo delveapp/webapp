@@ -199,6 +199,15 @@ def update_restaurant_info
   lous.save
 end
 
+def create_restaurant_admins
+  RestaurantAdmin.find_or_create_by(:user_id => User.find_by_email('test1@example.com')['id'],
+                                    :restaurant_id => Restaurant.find_by_name('Qdoba Mexican Grill')['id'])
+  RestaurantAdmin.find_or_create_by(:user_id => User.find_by_email('test1@example.com')['id'],
+                                    :restaurant_id => Restaurant.find_by_name("Chicken Lou's")['id'])
+  RestaurantAdmin.find_or_create_by(:user_id => User.find_by_email('test2@example.com')['id'],
+                                    :restaurant_id => Restaurant.find_by_name('Qdoba Mexican Grill')['id'])
+end
+
 if Rails.env == "development"
   create_search_categories
   create_restaurant_categories
@@ -209,4 +218,5 @@ if Rails.env == "development"
   create_user_pictures
   create_user_scores
   update_restaurant_info
+  create_restaurant_admins
 end

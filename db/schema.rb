@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151207043057) do
+ActiveRecord::Schema.define(version: 20151217165017) do
 
   create_table "menu_item_categories", force: :cascade do |t|
     t.string  "category",           limit: 255, default: "", null: false
@@ -43,6 +43,16 @@ ActiveRecord::Schema.define(version: 20151207043057) do
 
   add_index "menu_items", ["menu_item_category_id"], name: "fk_rails_c43fc08e11", using: :btree
   add_index "menu_items", ["restaurant_id"], name: "fk_rails_56e3e3a67b", using: :btree
+
+  create_table "restaurant_admins", force: :cascade do |t|
+    t.integer  "user_id",       limit: 4, null: false
+    t.integer  "restaurant_id", limit: 4, null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "restaurant_admins", ["restaurant_id"], name: "fk_rails_9d4189b622", using: :btree
+  add_index "restaurant_admins", ["user_id"], name: "fk_rails_bfa51ba40d", using: :btree
 
   create_table "restaurant_categories", force: :cascade do |t|
     t.string "category", limit: 255, null: false
@@ -115,6 +125,8 @@ ActiveRecord::Schema.define(version: 20151207043057) do
   add_foreign_key "menu_item_scores", "menu_items", on_delete: :cascade
   add_foreign_key "menu_items", "menu_item_categories", on_delete: :nullify
   add_foreign_key "menu_items", "restaurants", on_delete: :cascade
+  add_foreign_key "restaurant_admins", "restaurants", on_delete: :cascade
+  add_foreign_key "restaurant_admins", "users", on_delete: :cascade
   add_foreign_key "restaurants", "restaurant_categories", on_update: :cascade, on_delete: :nullify
   add_foreign_key "user_pictures", "menu_items", on_delete: :cascade
   add_foreign_key "user_pictures", "users", on_delete: :cascade
