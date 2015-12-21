@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   #protect_from_forgery with: :null_session
   respond_to :html, :json
-  before_action :auth_user, only: [:create_or_update, :create, :update, :destroy]
+  before_action :auth_user, only: [:create_or_update, :create, :update, :destroy, :new]
   before_filter :store_location
 
   def store_location
@@ -23,8 +23,13 @@ class ApplicationController < ActionController::Base
     session[:previous_url] || root_path
   end
 
+  def after_sign_up_path_for(resource)
+    #Do Not Redirect
+  end
+
+
   def auth_user
-    unless current_user || request.path == "/users/sign_in"
+    unless current_user || request.path.index("/users") == 0
       render :json => {'Error' => 'User not authenticated'}, :status => 401
     end
   end

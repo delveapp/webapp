@@ -13,10 +13,15 @@
         <% if devise_mapping.rememberable? -%>
             <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
         <% end -%>
-  </div>
+
+    </div>
   <div class="modal-footer">
-    <%= f.submit "Sign in", :class => 'btn btn-small btn-success' %>
-    <button class="btn btn-warning" type="button" data-dismiss="modal">Cancel</button>
+    <div class="text-center">
+      <%= f.submit "Sign in", :class => 'btn btn-small btn-success' %>
+      <button class="btn btn-warning" type="button" data-dismiss="modal">Cancel</button>
+      <button class="btn btn-link" type="button" style="bottom: 0;"
+              data-toggle="modal" data-target="#signup" data-dismiss="modal">Don't Have an Account?</button>
+    </div>
   </div>
     <% end %>
     </div>

@@ -23,6 +23,7 @@ class ScoreController < ApplicationController
       render :json => {data: new_score.as_json}, status: 201 if new_score.save
     else
       update(params)
+      #render :json => {error: "Score already created for user #{user} on menu item #{menu_item}. Use POST to update"}, status: 409
     end
   end
 
