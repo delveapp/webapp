@@ -1,19 +1,18 @@
 angular.module('delve')
-.controller 'HeaderController', (Auth, $scope, $rootScope, $uibModal) ->
+.controller 'HeaderController', (Auth, $scope, $rootScope) ->
+  $scope.signedIn = Auth.isAuthenticated;
+  $scope.logout = Auth.logout;
+
+  Auth.currentUser().then( (user) ->
+    $scope.user = user;
+    $scope.uid = user.id
+  );
   init = () ->
     $.get 'http://ipinfo.io', ((response) ->
       $scope.search_location = response.city + ", " + response.region
       $rootScope.$emit('locationLoaded', {loc: response.loc.split(",")})
       $scope.$apply()
     ), 'jsonp'
-
-  $scope.open = (signupAction) ->
-    $scope.action = signupAction
-    modalInstance = $uibModal.open(
-      animation: true
-      templateUrl: 'modals/signup_modal.html'
-      controller: 'SignupModalController'
-    )
   $scope.logout = () ->
     jQuery.ajax
       url: '/users/sign_out',
@@ -24,10 +23,18 @@ angular.module('delve')
 
   $scope.deleteAccount = () ->
     jQuery.ajax
-      url: '/users/' + $rootScope.user.id,
-      type: 'DELETE',
-      success: (response) ->
-        window.location.reload(true);
-        $scope.$apply()
+        url: '/users/' + $scope.uid,
+        type: 'DELETE',
+        success: (response) ->
+          $scope.$apply()
+
+  $scope.$on('devise:login',(e, user) ->
+    $scope.user = user;
+    $scope.uid = user.id
+  );
+
+  $scope.$on('devise:logout',(e, user) ->
+    $scope.user = {};
+  );
 
   init()

@@ -28,6 +28,15 @@ delve.config [ '$stateProvider', '$urlRouterProvider', '$locationProvider', '$ur
       url: menuItemUrl
       templateUrl: 'menu_items/menu_item.html'
       controller: 'MenuItemController'
+    .state 'login',
+      url: '/users/sign_in',
+      templateUrl: '/Users/nshenkman/NEU/webapp/app/views/welcome/_login_modal.html.erb',
+      controller: 'AuthController',
+      onEnter: ['$state', 'Auth', ($state, Auth) ->
+          Auth.currentUser().then(() ->
+            $state.go('/')
+          )
+        ]
 
     # default fall back route
     $urlRouterProvider.otherwise '/'

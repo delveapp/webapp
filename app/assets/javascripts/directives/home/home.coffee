@@ -26,8 +26,9 @@ delve.directive 'dvRating', ($rootScope, $http) ->
       $http({
         method: 'POST'
         url: 'api/score'
-        data: {uid: $rootScope.user.id, menu_item: attrs.menuItem, score: attrs.value}
+        data: {uid: $rootScope.uid, menu_item: attrs.menuItem, score: attrs.value}
       }).then (resp) ->
         alert("The score for menu item " + attrs.menuItem + " has been updated to " + resp.data.data.score + ": \n" + JSON.stringify resp.data.data)
       , (resp) ->
-        alert("There was an error adding or updating your score: \n" + JSON.stringify(resp.data) + '\nStatus: ' + JSON.stringify(resp.status))
+        if resp.status == 401
+          $("#login").modal('show')

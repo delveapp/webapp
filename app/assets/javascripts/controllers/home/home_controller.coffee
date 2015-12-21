@@ -1,10 +1,6 @@
 delve = angular.module('delve')
 delve.controller 'HomeController', (Auth, $scope, $rootScope) ->
   $scope.init = () ->
-    Auth.currentUser().then ((user) ->
-        $rootScope.user = user;
-      ), (error) ->
-        console.log "ERROR", error
     $scope.menuItems = []
     $scope.searchRadius = 1
     $scope.sortOrder = "score-desc"

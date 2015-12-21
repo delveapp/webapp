@@ -1,5 +1,4 @@
 class UserController < ApplicationController
-  skip_before_action :verify_authenticity_token
 
   def destroy
     user = current_user
@@ -15,4 +14,5 @@ class UserController < ApplicationController
       render :json => {success: false, error: "user #{user.id} not found"}, :status => 404
     end
   end
+
 end

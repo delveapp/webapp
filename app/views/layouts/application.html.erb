@@ -8,6 +8,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body ng-app="delve">
+<%= render "welcome/login_modal" %>
 <% if notice %>
     <p class="alert alert-success"><%= notice %></p>
 <% end %>
