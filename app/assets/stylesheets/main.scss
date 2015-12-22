@@ -21,6 +21,7 @@
 
 .menu-item-score {
   display: inline-block;
+  padding-right: 15px;
 }
 
 #search-param-selection {
@@ -32,7 +33,19 @@
     margin-right: 0px;
   }
 }
-#login .modal-dialog, #signup .modal-dialog
+
+.has-error {
+  background-color: rgba(255, 83, 116, 0.35);
+  border-radius: 3px;
+}
+
+.btn-disabled {
+  opacity: .4;
+}
+
+.item-rating {
+  float: right;
+}#login .modal-dialog, #signup .modal-dialog
 {
   width: 25%;
   text-align: center;
