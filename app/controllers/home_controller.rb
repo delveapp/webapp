@@ -8,10 +8,14 @@ class HomeController < ApplicationController
                                          params[:longitude].to_f,
                                          params[:range].to_f,
                                          params[:sortOrder])
-    items.each do |i|
-      score = UserScore.find_by({ user_id: current_user['id'], menu_item_id: i['id'] })
-      i['user_score'] = score['score'] unless score == nil
+
+    if user_signed_in?
+      items.each do |i|
+        score = UserScore.find_by({ user_id: current_user['id'], menu_item_id: i['id'] })
+        i['user_score'] = score['score'] unless score == nil
+      end
     end
+
     render :json => {:success => true, :data => items }
   end
 
