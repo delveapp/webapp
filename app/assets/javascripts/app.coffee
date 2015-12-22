@@ -12,6 +12,22 @@ delve = angular.module 'delve', [
 delve.config [ '$stateProvider', '$urlRouterProvider', '$locationProvider', '$urlMatcherFactoryProvider'
   ($stateProvider, $urlRouterProvider, $locationProvider, $urlMatcherFactoryProvider, AuthProvider) ->
 
+    $.notifyDefaults({
+      type: 'info',
+      allow_dismiss: true
+      placement: {
+        from: "top",
+        align: "right"
+      },
+      delay: 1000,
+      animate: {
+        enter: 'animated fadeInDown',
+        exit: 'animated fadeOutUp'
+      }
+
+    });
+
+
     $urlMatcherFactoryProvider.strictMode false
     menuItemUrl = $urlMatcherFactoryProvider.compile("/restaurant/:restaurantName/:menuItemId");
 

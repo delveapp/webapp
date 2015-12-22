@@ -10,4 +10,6 @@ asset 'angular-utils-pagination'
 asset 'nya-bootstrap-select'
 asset 'angular-bootstrap'
 asset 'angular-input-stars'
+asset 'angular-ui-notification'
+asset 'remarkable-bootstrap-notify'
 # vim: ft=ruby

@@ -3,9 +3,6 @@
   <p>We let you view (and rank!) the menus of restaurants, bars, food stands, and more!</p>
   <p>Anyone can view the rankings, but you have to be a member to vote</p>
   <p>Get started below!</p>
-  <div class="row">
-    <button class="btn btn-lg" type="button">Sign Up Now</button>
-  </div>
   <section id="top-menu-items" ng-scope>
     <div id="search-param-selection" class="row">
     <div class="col-md-8 spacer"></div>
@@ -35,7 +32,7 @@
           <a class = "left" ui-sref="menuItem({restaurantName: menuItem.restaurant.url_title, menuItemId: menuItem.id})">{{menuItem.name}}</a>
         </h1>
         <div class="right score-container">
-          <input input-stars dv-rating id="item-rating-{{menuItem.id}}" data-menu-item="{{menuItem.id}}" value="{{menuItem.menu_item_score.score}}" max="5" icon-base="fa fa-lg fa-fw" icon-empty="fa-star-o" icon-hover="hover" icon-full="fa-star" ng-model="menuItem.menu_item_score.score"></inputinput-stars>
+          <input input-stars dv-rating id="item-rating-{{menuItem.id}}" data-menu-item="{{menuItem.id}}" value="{{menuItem.menu_item_score.score}}" name={{menuItem.name}} max="5" icon-base="fa fa-lg fa-fw" icon-empty="fa-star-o" icon-hover="hover" icon-full="fa-star" ng-model="menuItem.menu_item_score.score"></inputinput-stars>
           <h4 class="menu-item-score"><label id="item-rating-{{menuItem.id}}-label">{{menuItem.menu_item_score.score}} (${{menuItem.price}})</label></h4>
         </div>
       </td>

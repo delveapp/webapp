@@ -34,19 +34,24 @@
     </div>
   </div>
   <div class="col-sm-2" id="header-right">
-    <div class="row" style="padding-top:5px">
-      <div class="col-sm-offset-3 col-sm-6">
-        <button type="button" class="btn btn-xs btn-success" style="width:100%;text-align:center;" data-toggle="modal" data-target="#login">Login</button>
+    <div class="row" style="padding-top:10px">
+      <div class="col-sm-offset-4 col-sm-6">
+        <button type="button" class="btn btn-md btn-success" ng-show= "isNotAuthenticated()"style="width:100%;text-align:center;" data-toggle="modal" data-target="#login">Login</button>
       </div>
     </div>
     <div class="row" style="padding-top:10px;">
-      <div class="col-sm-offset-3 col-sm-6">
-        <button type="button" class="btn btn-xs btn-warning " style="width:100%;text-align:center;" data-toggle="modal"  data-target="#signup">Signup</button>
+      <div class="col-sm-offset-4 col-sm-6">
+        <button type="button" class="btn btn-md btn-warning " ng-show= "isNotAuthenticated()" style="width:100%;text-align:center;" data-toggle="modal"  data-target="#signup">Signup</button>
+      </div>
+    </div>
+    <div class="row" style="padding-top:0px;">
+      <div class="col-sm-offset-2">
+        <h6 ng-show= "isAuthenticated()" style="width:100%; text-align: center">{{user.email}}</h6>
       </div>
     </div>
     <div class="row" style="padding-top:10px;">
-      <div class="col-sm-offset-3 col-sm-6">
-        <button type="button" class="btn btn-xs btn-danger" style="width:100%;text-align:center;" ng-click="logout()">Log Out</button>
+      <div class="col-sm-offset-4 col-sm-6">
+        <button type="button" class="btn btn-md btn-danger" ng-show= "isAuthenticated()" style="width:100%;text-align:center;" ng-click="logout()">Log Out</button>
       </div>
     </div>
   </div>

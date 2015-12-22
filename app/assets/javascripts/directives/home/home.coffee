@@ -28,7 +28,7 @@ delve.directive 'dvRating', ($rootScope, $http) ->
         url: 'api/score'
         data: {uid: $rootScope.uid, menu_item: attrs.menuItem, score: attrs.value}
       }).then (resp) ->
-        alert("The score for menu item " + attrs.menuItem + " has been updated to " + resp.data.data.score + ": \n" + JSON.stringify resp.data.data)
+        $.notify { message: "Your score for " + attrs.name + " has been updated to " + resp.data.data.score }
       , (resp) ->
         if resp.status == 401
           $("#login").modal('show')

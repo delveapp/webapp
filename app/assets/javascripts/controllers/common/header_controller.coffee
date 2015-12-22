@@ -1,11 +1,10 @@
 angular.module('delve')
 .controller 'HeaderController', (Auth, $scope, $rootScope) ->
-  $scope.signedIn = Auth.isAuthenticated;
+  $scope.signedIn = Auth.isAuthenticated();
   $scope.logout = Auth.logout;
-
   Auth.currentUser().then( (user) ->
     $scope.user = user;
-    $scope.uid = user.id
+    $scope.uid = user.id;
   );
   init = () ->
     $.get 'http://ipinfo.io', ((response) ->
@@ -28,6 +27,9 @@ angular.module('delve')
         success: (response) ->
           $scope.$apply()
 
+
+
+
   $scope.$on('devise:login',(e, user) ->
     $scope.user = user;
     $scope.uid = user.id
@@ -37,4 +39,9 @@ angular.module('delve')
     $scope.user = {};
   );
 
+  $scope.isNotAuthenticated = () ->
+    return !Auth.isAuthenticated()
+
+  $scope.isAuthenticated = () ->
+    return Auth.isAuthenticated()
   init()

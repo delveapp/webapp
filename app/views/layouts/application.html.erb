@@ -13,7 +13,12 @@
 <%= render "welcome/signup_modal" %>
 
 <% if notice %>
-    <p class="alert alert-success"><%= notice %></p>
+    <div class='alert-messages'>
+    <div class="alert alert-info fade in fade"  ><%= notice %>
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+
+    </div>
+    </div>
 <% end %>
 <% if alert %>
     <p class="alert alert-danger"><%= alert %></p>
