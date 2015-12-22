@@ -4,10 +4,15 @@ class HomeController < ApplicationController
   end
 
   def top_menu_items
-    render :json => {:success => true, :data => MenuItem.find_top_menu_items(params[:latitude].to_f,
-                                                                             params[:longitude].to_f,
-                                                                             params[:range].to_f,
-                                                                             params[:sortOrder])}#[0..(params[:limit].to_i - 1)]}
+    items = MenuItem.find_top_menu_items(params[:latitude].to_f,
+                                         params[:longitude].to_f,
+                                         params[:range].to_f,
+                                         params[:sortOrder])
+    items.each do |i|
+      score = UserScore.find_by({ user_id: current_user['id'], menu_item_id: i['id'] })
+      i['user_score'] = score['score'] unless score == nil
+    end
+    render :json => {:success => true, :data => items }
   end
 
   def search_by_user_selected_category
