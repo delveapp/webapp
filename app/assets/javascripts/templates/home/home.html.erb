@@ -1,40 +1,68 @@
 <div class="container">
   <section id="top-menu-items" ng-scope>
     <div id="search-param-selection" class="row">
-    <div class="col-md-8 spacer"></div>
-    <div class="col-md-2">
-      <select id="search-radius" class="form-control" dv-menu-selection>
-        <option data-value="1">1 mile</option>
-        <option data-value="2">2 miles</option>
-        <option data-value="5" selected="selected">5 miles</option>
-        <option data-value="10">10 miles</option>
-        <option data-value="20">20 miles</option>
-        <option data-value="50">50 miles</option>
-      </select>
+      <div class="col-md-8 spacer"></div>
+      <div class="col-md-2">
+        <select id="search-radius" class="form-control" dv-menu-selection>
+          <option data-value="1">1 mile</option>
+          <option data-value="2">2 miles</option>
+          <option data-value="5" selected="selected">5 miles</option>
+          <option data-value="10">10 miles</option>
+          <option data-value="20">20 miles</option>
+          <option data-value="50">50 miles</option>
+          <option data-value="100000000">Everywhere</option>
+
+        </select>
+      </div>
+      <div class="col-md-2">
+        <select id="sort-order" class="form-control col-md-1" dv-menu-selection>
+          <option data-value="score-desc">score: high to low</option>
+          <option data-value="score-asc">score: low to high</option>
+          <option data-value="price-desc">price: high to low</option>
+          <option data-value="price-asc">price: low to high</option>
+        </select>
+      </div>
     </div>
-    <div class="col-md-2">
-      <select id="sort-order" class="form-control col-md-1" dv-menu-selection>
-        <option data-value="score-desc">score: high to low</option>
-        <option data-value="score-asc">score: low to high</option>
-        <option data-value="price-desc">price: high to low</option>
-        <option data-value="price-asc">price: low to high</option>
-      </select>
-    </div>
-    </div>
-    <table class="table table-striped" id="menu-items">
-    <tr class="menu-item" ng-repeat="menuItem in menuItems">
-      <td>
-        <h1><a class="left" ui-sref="menuItem({restaurantName: menuItem.restaurant.url_title, menuItemId: menuItem.id})">{{menuItem.name}}</a></h1>
-        <div class="right score-container">
-          <input input-stars dv-rating id="item-rating-{{menuItem.id}}" data-menu-item="{{menuItem.id}}"
-                 value="{{menuItem.menu_item_score.score}}" name={{menuItem.name}}
-                 max="5" icon-base="fa fa-lg fa-fw" icon-empty="fa-star-o"
-                 icon-hover="hover" icon-full="fa-star" ng-model="menuItem.user_score">
-          <br>
-          <h4 class="menu-item-score right"><label class="item-rating" id="item-rating-{{menuItem.id}}-label">{{menuItem.menu_item_score.score}} (${{menuItem.price}})</label><br><span class="right" ng-show="menuItem.user_score">(Your Score: {{menuItem.user_score}})</span></h4>
-        </div>
-      </td>
-    </tr>
+    <table class="table" id="menu-items">
+      <tr class="menu-item" ng-repeat="menuItem in menuItems">
+        <td>
+          <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="false">
+
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                  <a href="#">
+
+                    <div class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                         href="#{{menuItem.id}}" aria-expanded="false" aria-controls="{{menuItem.id}}">
+                      {{menuItem.name}}
+                    </div>
+                  </a>
+
+                </h4>
+              </div>
+              <div id="{{menuItem.id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                  <div class="right score-container">
+                    <input input-stars dv-rating id="item-rating-{{menuItem.id}}" data-menu-item="{{menuItem.id}}"
+                           value="{{menuItem.menu_item_score.score}}" name={{menuItem.name}}
+                           max="5" icon-base="fa fa-lg fa-fw" icon-empty="fa-star-o"
+                           icon-hover="hover" icon-full="fa-star" ng-model="menuItem.user_score">
+                    <br>
+                    <h4 class="menu-item-score right"><label class="item-rating" id="item-rating-{{menuItem.id}}-label">
+                      {{menuItem.menu_item_score.score}} (${{menuItem.price}})</label><br>
+                      <span class="right" ng-show="menuItem.user_score">(Your Score: {{menuItem.user_score}})</span></h4>
+                  </div>
+                  <h5>{{menuItem.description}}</h5>
+                  <h4>{{menuItem.restaurant.name}}</h4>
+                  <h5>{{menuItem.restaurant.description}}</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
     </table>
+
   </section>
 </div>
