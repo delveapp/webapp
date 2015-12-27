@@ -1,6 +1,5 @@
 angular.module('delve')
-.controller 'RestaurantController', ($scope, $http, $stateParams, Auth) ->
-
+.controller 'RestaurantController', (_, $scope, $http, $stateParams, Auth) ->
   $scope.init = () ->
     $http(
       method: "GET"

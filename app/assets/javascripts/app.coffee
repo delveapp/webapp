@@ -7,6 +7,7 @@ delve = angular.module 'delve', [
   'ui.bootstrap',
   'angular-input-stars',
   'Devise',
+  'underscore'
 ]
 
 underscore = angular.module('underscore', []);
