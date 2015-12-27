@@ -45,11 +45,11 @@
 
 .item-rating {
   float: right;
-}#login .modal-dialog, #signup .modal-dialog
-{
+}
+
+.modal-dialog {
   width: 25%;
   text-align: center;
-
 }
 
 .alert-messages {
@@ -58,4 +58,16 @@
   right: 1%;
   top: 105px;
   z-index: 7000;
+}
+
+ul[readonly] {
+  cursor: default;
+
+  li {
+    cursor: default;
+
+    i {
+      cursor: default;
+    }
+  }
 }

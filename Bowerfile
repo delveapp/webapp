@@ -12,4 +12,5 @@ asset 'angular-bootstrap'
 asset 'angular-input-stars'
 asset 'angular-ui-notification'
 asset 'remarkable-bootstrap-notify'
+asset 'underscore'
 # vim: ft=ruby

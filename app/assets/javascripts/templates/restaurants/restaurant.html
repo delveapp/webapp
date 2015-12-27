@@ -3,7 +3,8 @@
 		<div class="col-sm-8">
 			<h1>{{restaurant.name}}</h1>
 			<h4>{{restaurant.address}}</h4>
-			<div>
+            <button class="btn btn-warning manage-restaurant-button" ng-show="admin" dv-manage>Manage {{restaurant.name}}</button>
+			<div class="restaurant-rating">
 				<input-stars max="5" icon-base="fa fa-lg fa-fw" icon-empty="fa-star-o" icon-hover="hover" icon-full="fa-star" ng-model="restaurant.score" readonly></input-stars>{{rating}}
 			</div>
 		</div>

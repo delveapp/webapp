@@ -1,5 +1,5 @@
 angular.module('delve')
-.controller 'RestaurantController', ($scope, $http, $stateParams) ->
+.controller 'RestaurantController', ($scope, $http, $stateParams, Auth) ->
 
   $scope.init = () ->
     $http(
@@ -10,6 +10,10 @@ angular.module('delve')
     .then ((response) ->
       $scope.restaurant = response.data.restaurant
       $scope.menu_items = response.data.menu_items
+      Auth.currentUser().then (data) ->
+        rest = response.data.restaurant
+        admin = _.findWhere data.restaurant_admins, {restaurant_id: rest.id}
+        $scope.admin = admin
     ), (response) ->
       console.log "error"
 

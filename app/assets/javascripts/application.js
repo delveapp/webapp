@@ -23,4 +23,5 @@
 //= require angular-bootstrap
 //= require angular-devise
 //= require remarkable-bootstrap-notify
+//= require underscore
 //= require_tree .

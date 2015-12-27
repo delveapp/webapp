@@ -9,6 +9,11 @@ delve = angular.module 'delve', [
   'Devise',
 ]
 
+underscore = angular.module('underscore', []);
+underscore.factory('_', ['$window', ($window) ->
+  $window._ # assumes underscore has already been loaded on the page
+]);
+
 delve.config [ '$stateProvider', '$urlRouterProvider', '$locationProvider', '$urlMatcherFactoryProvider'
   ($stateProvider, $urlRouterProvider, $locationProvider, $urlMatcherFactoryProvider, AuthProvider) ->
 
@@ -40,6 +45,10 @@ delve.config [ '$stateProvider', '$urlRouterProvider', '$locationProvider', '$ur
       url: '/restaurant/{restaurantName}'
       templateUrl: 'restaurants/restaurant.html'
       controller: 'RestaurantController'
+    .state 'restaurantAdmin',
+      url: '/restaurant/{restaurantName}/admin'
+      templateUrl: 'restaurants/restaurant_admin_panel.html'
+      controller: "RestaurantAdminController"
     .state 'menuItem',
       url: menuItemUrl
       templateUrl: 'menu_items/menu_item.html'
