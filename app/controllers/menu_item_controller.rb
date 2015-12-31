@@ -1,3 +1,11 @@
+#
+# Copyright (c) 2015-2016
+# Brendan Downey, Adam Markon, Nikita Shenkman
+#
+# The code contained in this file and any related code in this project
+# may not be modified or used without consent of the above listed owners.
+#
+
 class MenuItemController < ApplicationController
   def get_menu_item_by_id
     if params[:menu_item_id] && params[:menu_item_id].length > 0

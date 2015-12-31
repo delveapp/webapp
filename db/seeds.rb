@@ -1,3 +1,11 @@
+#
+# Copyright (c) 2015-2016
+# Brendan Downey, Adam Markon, Nikita Shenkman
+#
+# The code contained in this file and any related code in this project
+# may not be modified or used without consent of the above listed owners.
+#
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #

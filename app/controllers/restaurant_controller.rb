@@ -1,3 +1,11 @@
+#
+# Copyright (c) 2015-2016
+# Brendan Downey, Adam Markon, Nikita Shenkman
+#
+# The code contained in this file and any related code in this project
+# may not be modified or used without consent of the above listed owners.
+#
+
 class RestaurantController < ApplicationController
   def get_restaurant_by_url_title
     if params[:url_title] && params[:url_title].length > 0

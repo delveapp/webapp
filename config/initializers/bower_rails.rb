@@ -1,3 +1,11 @@
+#
+# Copyright (c) 2015-2016
+# Brendan Downey, Adam Markon, Nikita Shenkman
+#
+# The code contained in this file and any related code in this project
+# may not be modified or used without consent of the above listed owners.
+#
+
 BowerRails.configure do |bower_rails|
   # Tell bower-rails what path should be considered as root. Defaults to Dir.pwd
   # bower_rails.root_path = Dir.pwd
