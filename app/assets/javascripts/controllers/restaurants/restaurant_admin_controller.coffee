@@ -9,8 +9,6 @@
 angular.module('delve')
 .controller 'RestaurantAdminController', (Auth, $rootScope, $scope, $http, $stateParams) ->
   $scope.init = () ->
-
-  $scope.getDetails = () ->
     $http(
       method: "GET"
       params: {"url_title": $stateParams.restaurantName}
@@ -18,8 +16,6 @@ angular.module('delve')
     ).then((response) ->
       $scope.restaurant = response.data.restaurant
       $scope.menu_items = response.data.menu_items
-
-      $scope.$apply()
     )
 
   $scope.init()

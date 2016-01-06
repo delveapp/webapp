@@ -1,0 +1,13 @@
+.header {
+  min-height: 125px;
+  background-color: gray;
+  padding: 15px;
+
+  .form-group > div {
+    padding-bottom: 15px;
+  }
+
+  .header-buttons > div {
+    padding-top: 10px;
+  }
+}

@@ -1,4 +1,4 @@
-<div style="height:100px;background-color:gray">
+<div class="header">
   <div class="col-sm-2" id="header-left">
     <h2><a class="menu-item-link" ui-sref="home" href>Delve</a></h2>
   </div>
@@ -33,23 +33,23 @@
       </div>
     </div>
   </div>
-  <div class="col-sm-2" id="header-right">
-    <div class="row" style="padding-top:10px">
+  <div class="col-sm-2" id="header-buttons">
+    <div class="row">
       <div class="col-sm-offset-4 col-sm-6">
         <button type="button" class="btn btn-md btn-success" ng-show= "isNotAuthenticated()"style="width:100%;text-align:center;" data-toggle="modal" data-target="#login">Login</button>
       </div>
     </div>
-    <div class="row" style="padding-top:10px;">
+    <div class="row">
       <div class="col-sm-offset-4 col-sm-6">
         <button type="button" class="btn btn-md btn-warning " ng-show= "isNotAuthenticated()" style="width:100%;text-align:center;" data-toggle="modal"  data-target="#signup">Signup</button>
       </div>
     </div>
-    <div class="row" style="padding-top:0px;">
+    <div class="row">
       <div class="col-sm-offset-2">
         <h6 ng-show= "isAuthenticated()" style="width:100%; text-align: center">{{user.email}}</h6>
       </div>
     </div>
-    <div class="row" style="padding-top:10px;">
+    <div class="row">
       <div class="col-sm-offset-4 col-sm-6">
         <button type="button" class="btn btn-md btn-danger" ng-show= "isAuthenticated()" style="width:100%;text-align:center;" ng-click="logout()">Log Out</button>
       </div>
